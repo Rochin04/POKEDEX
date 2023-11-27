@@ -4,14 +4,14 @@
              x:Class="POKEDEX.Views.ListarPokemon">
     <Grid RowDefinitions="70,*" BackgroundColor="#F5F6F6">
         <Label Text="POKEDEX" HorizontalOptions="Center" VerticalOptions="Center" FontSize="28" FontAttributes="Bold" TextColor="#FD8298" />
-        <CollectionView BackgroundColor="#EAEDEC" Grid.Row="1" ItemsSource="{Binding ListaPokemon}" Margin="0,0,0,0">
+        <CollectionView BackgroundColor="#EAEDEC" Grid.Row="1" ItemsSource="{Binding ListaPokemon}" Margin="0,0,0,0 ">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="100,*" Margin="10,10,0,0">
-                        <Frame Grid.Row="1" WidthRequest="250" HorizontalOptions="Center" CornerRadius="15" Margin="0,-25,0,0" BackgroundColor="{Binding BackgronColor}" HasShadow="False">
+                        <Frame Grid.Row="1" WidthRequest="250" HorizontalOptions="Center" CornerRadius="15" Margin="0,-10,0,0" BackgroundColor="{Binding BackgronColor}" HasShadow="False">
                             <StackLayout Margin="0,45,0,0">
                                 <Label Text="{Binding NmOrder}"/>
                                 <Label Text="{Binding Name}" CharacterSpacing="1" FontSize="20" Margin="0,0,0,10" />
