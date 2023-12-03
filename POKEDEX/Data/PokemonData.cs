@@ -14,14 +14,6 @@ namespace POKEDEX.Data
 {
     public class PokemonData
     {
-        //private INavigation navigation1;
-        //private object navigation2;
-
-        //public PokemonData(INavigation navigation1, object navigation2)
-        //{
-        //    this.navigation1 = navigation1;
-        //    this.navigation2 = navigation2;
-        //}
 
         public async Task InsertarPokemon(PokemonModel parametros)
         {
@@ -41,6 +33,11 @@ namespace POKEDEX.Data
         {
             var data = await Task.Run(() => Connection.firebase.Child("Pokemon").AsObservable<PokemonModel>().AsObservableCollection());
             return data;
+        }
+
+    }
+}
+
             //return (await Connection.firebase.Child("Pokemon").OnceAsync<PokemonModel>()).Select(item => new PokemonModel
             //{
             //    IdPokemon = item.Key,
@@ -51,7 +48,11 @@ namespace POKEDEX.Data
             //    NmOrder = item.Object.NmOrder,
             //    PowerColor = item.Object.PowerColor
             //}).ToList();
-        }
+        //private INavigation navigation1;
+        //private object navigation2;
 
-    }
-}
+        //public PokemonData(INavigation navigation1, object navigation2)
+        //{
+        //    this.navigation1 = navigation1;
+        //    this.navigation2 = navigation2;
+        //}

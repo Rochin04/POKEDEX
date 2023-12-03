@@ -26,30 +26,40 @@ namespace POKEDEX.ViewModel.VMPokemon
                 OnPropertyChanged();
             }
         }
-        //public ObservableCollection<PokemonModel> Lista
-        //{
-        //    get { return _Lista; }
-        //    set { SetValue(ref _Lista, value); OnPropertyChanged(); }
-        //}
         #endregion
         #region Procesos
         public async Task Registrar()
         {
             await Navigation.PushModalAsync(new RegistroPokemon());
         }
+        public async Task DetallesPokemon(PokemonModel parametros)
+        {
+            await Navigation.PushModalAsync(new DetallesPokemon(parametros));
+        }
+        public async Task Editar()
+        {
+            // Aquí puedes agregar lógica para preparar datos antes de navegar a la página de edición
+            // Por ejemplo, puedes pasar el ID del Pokémon que se va a editar
+
+            // Supongamos que tienes una propiedad en tu ViewModel llamada PokemonSeleccionado
+            //string pokemonId = PokemonSeleccionado?.Id;
+
+            //if (!string.IsNullOrEmpty(pokemonId))
+            //{
+            //    // Navegar a la página de edición, pasando el ID del Pokémon
+            //    await Navigation.PushAsync(new EditarPokemon(pokemonId));
+            //}
+        }
         public async Task MostrarPokemon()
         {
             var function = new PokemonData();
             ListaPokemon = await function.MostrarPokemon();
         }
-        public void ProcesoSimple()
-        {
-
-        }
         #endregion
         #region Command
         public ICommand Registrarcommand => new Command(async () => await Registrar());
-        public ICommand ProcesoSimpCommand => new Command(ProcesoSimple);
+        public ICommand Detallescommand => new Command<PokemonModel>(async (p) => await DetallesPokemon(p));
+        public ICommand EditarCommand => new Command(async () => await Editar());
         #endregion
         #region Constructor
         public VMPokemonList(INavigation navigation)

@@ -7,6 +7,7 @@ using POKEDEX.ViewModel.VMPokemon;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using POKEDEX.Views;
+using POKEDEX.Model;
 
 namespace POKEDEX.Views
 {
@@ -17,7 +18,10 @@ namespace POKEDEX.Views
         {
             InitializeComponent();
             BindingContext = new VMPokemonList(Navigation);
-
+        }
+        public async void ListaView(object sender, SelectedItemChangedEventArgs e)
+        {
+            //await Navigation.PushAsync(new EditarPokemon(e.SelectedItem as PokemonModel));
         }
     }
 }

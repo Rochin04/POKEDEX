@@ -14,3 +14,5 @@ C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\POKEDEX.dll
 C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\refint\POKEDEX.dll
 C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\POKEDEX.pdb
 C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\Views\ListarPokemon.xaml.g.cs
+C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\Views\DetallesPokemon.xaml.g.cs
+C:\Users\emiro\source\repos\POKEDEX\POKEDEX\obj\Debug\netstandard2.0\Views\EditarPokemon.xaml.g.cs
