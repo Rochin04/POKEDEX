@@ -19,6 +19,7 @@
                     <TapGestureRecognizer Command="{Binding Volvercommand}"/>
                 </Image.GestureRecognizers>
             </Image>
+            <!--<Label Text="{Binding ParametrosRecibe.IdPokemon}" TextColor="Black" FontSize="20" FontAttributes="Bold"/>-->
             <Label Text="{Binding ParametrosRecibe.NmOrder}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
             <Image Source="{Binding ParametrosRecibe.Icon}" HeightRequest="250"/>
             <Label Text="{Binding ParametrosRecibe.Name}" FontSize="20" TextColor="Black" HorizontalOptions="Center"/>
@@ -46,7 +47,14 @@
             <Frame CornerRadius="30" Margin="0,20,0,0" Padding="0" HeightRequest="65" HasShadow="False">
                 <Grid ColumnDefinitions="*,*" BackgroundColor="Red">
                     <Button Text="Editar" BackgroundColor="Orange" CornerRadius="25" Margin="-5,0,-10,0" FontAttributes="Bold" Grid.Column="0" />
-                    <Button Text="ELiminar" BackgroundColor="Red" CornerRadius="25" Margin="210,0,-200,0" FontAttributes="Bold" />
+                    <!--Command="{Binding Path=BindingContext.Detallescommand, Source={x:Reference Listas}}" CommandParameter="{Binding .}" MODIFICAR ESTO Y HACERLO CON UN COLLECTIONvIEW-->
+                    <!--Command="{Binding EditarPokemonCommand}"-->
+                    <Button Text="ELiminar" BackgroundColor="Red" CornerRadius="25" Margin="210,0,-200,0" FontAttributes="Bold" Command="{Binding EliminarCommand}" CommandParameter="{Binding ParametrosRecibe.NmOrder}"/>
+                    <!--Command="{Binding EliminarPokemonCommand}"-->
+                    <!--si no jala lo coloco en el grid de arriba-->
+                    <!--<Grid.GestureRecognizers>
+    <TapGestureRecognizer Command="{Binding Path=BindingContext.Detallescommand, Source={x:Reference Listas}}" CommandParameter="{Binding .}"/>
+</Grid.GestureRecognizers>-->
                 </Grid>
             </Frame>
         </StackLayout>

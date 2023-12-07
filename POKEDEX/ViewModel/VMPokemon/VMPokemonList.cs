@@ -34,21 +34,11 @@ namespace POKEDEX.ViewModel.VMPokemon
         }
         public async Task DetallesPokemon(PokemonModel parametros)
         {
-            await Navigation.PushModalAsync(new DetallesPokemon(parametros));
+            await Navigation.PushModalAsync(new DetallesPokemon(parametros));   //  Aquie esta la forma en la que le pasa los datos de la lista a la pagina de detalles
         }
-        public async Task Editar()
+        public async Task EditarPokemonn(PokemonModel parametrosEditar)
         {
-            // Aquí puedes agregar lógica para preparar datos antes de navegar a la página de edición
-            // Por ejemplo, puedes pasar el ID del Pokémon que se va a editar
-
-            // Supongamos que tienes una propiedad en tu ViewModel llamada PokemonSeleccionado
-            //string pokemonId = PokemonSeleccionado?.Id;
-
-            //if (!string.IsNullOrEmpty(pokemonId))
-            //{
-            //    // Navegar a la página de edición, pasando el ID del Pokémon
-            //    await Navigation.PushAsync(new EditarPokemon(pokemonId));
-            //}
+            await Navigation.PushAsync(new EditarPokemon(parametrosEditar));
         }
         public async Task MostrarPokemon()
         {
@@ -58,8 +48,8 @@ namespace POKEDEX.ViewModel.VMPokemon
         #endregion
         #region Command
         public ICommand Registrarcommand => new Command(async () => await Registrar());
-        public ICommand Detallescommand => new Command<PokemonModel>(async (p) => await DetallesPokemon(p));
-        public ICommand EditarCommand => new Command(async () => await Editar());
+        public ICommand Detallescommand => new Command<PokemonModel>(async (p) => await DetallesPokemon(p));    //  Aqui este como se hace el comando utilizando el modelo
+        public ICommand EditarCommand => new Command<PokemonModel>(async (p) => await EditarPokemonn(p));
         #endregion
         #region Constructor
         public VMPokemonList(INavigation navigation)

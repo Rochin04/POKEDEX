@@ -19,10 +19,15 @@ namespace POKEDEX.Views
 			InitializeComponent ();
             BindingContext = new VMDetalles(Navigation, parametros);
         }
-        Button editarButton = new Button
-        {
-            Text = "Editar",
-            //Command = new Command(EditarCommand)
-        };
+        //Button editarButton = new Button
+        //{
+        //    Text = "Editar"
+        //    //Command = new Command(EditarCommand)
+        //};
+
+        //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

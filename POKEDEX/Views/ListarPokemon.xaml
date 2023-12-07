@@ -15,7 +15,7 @@
                             <StackLayout Margin="0,45,0,0">
                                 <Label Text="{Binding NmOrder}"/>
                                 <Label Text="{Binding Name}" CharacterSpacing="1" FontSize="20" Margin="0,0,0,10" />
-                                <Button Text="{Binding Power}" CornerRadius="30" HorizontalOptions="Start" TextTransform="None" HeightRequest="40" BackgroundColor="{Binding PowerColor}" Command="{Binding Path=BindingContext.Detallescommand, Source={x:Reference Listas}}" CommandParameter="{Binding .}"/>
+                                <Button Text="{Binding Power}" CornerRadius="30" HorizontalOptions="Start" TextTransform="None" HeightRequest="40" BackgroundColor="{Binding PowerColor}" Command="{Binding Path=BindingContext.EditarCommand, Source={x:Reference Listas}}" CommandParameter="{Binding .}"/> <!--Esto es lo que falla xd-->
                             </StackLayout>
                         </Frame>
                         <Image  Source="{Binding Icon}" Grid.RowSpan="2" HeightRequest="180" VerticalOptions="StartAndExpand"/>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Firebase.Database;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace POKEDEX.Data
 {
@@ -25,7 +26,7 @@ namespace POKEDEX.Data
                  Icon = parametros.Icon,
                  NmOrder = parametros.NmOrder,
                  PowerColor = parametros.PowerColor,
-                 IdPokemon = parametros.IdPokemon,
+                 IdPokemon = parametros.IdPokemon
             });
         }
         //public async Task<List<PokemonModel>> MostrarPokemon()
@@ -34,7 +35,87 @@ namespace POKEDEX.Data
             var data = await Task.Run(() => Connection.firebase.Child("Pokemon").AsObservable<PokemonModel>().AsObservableCollection());
             return data;
         }
+        public async Task EditarPokemon(PokemonModel parametrosRecibe)
+        {
+            await Connection.firebase.Child("Pokemon").PutAsync(new PokemonModel()
+            {
+                Name = parametrosRecibe.Name,
+                BackgronColor = parametrosRecibe.BackgronColor,
+                Power = parametrosRecibe.Power,
+                Icon = parametrosRecibe.Icon,
+                NmOrder = parametrosRecibe.NmOrder,
+                PowerColor = parametrosRecibe.PowerColor,
+                IdPokemon = parametrosRecibe.IdPokemon
+            });
+        }
+        public async Task EliminarPokemon(PokemonModel nmrOrden)
+        {
+            if (nmrOrden != null && !string.IsNullOrEmpty(nmrOrden.NmOrder))
+            {
+                var eliminar = (await Connection.firebase.Child("Pokemon").OnceAsync<PokemonModel>()).Where(a => a.Object.NmOrder == nmrOrden.NmOrder).FirstOrDefault();
+                await Connection.firebase.Child("Pokemon").Child(eliminar.Key).DeleteAsync();
+                //await Connection.firebase.Child("Pokemon").Child(eliminar.Key).DeleteAsync();
+            }
+        }
+        //esto nose de donde lo saque la neta jaja
+        //public async Task EditarPokemon(PokemonModel parametros)
+        //{
+        //    await Connection.firebase
+        //        .Child("Pokemon")
+        //        .Child(parametros.IdPokemon)
+        //        .PutAsync(new PokemonModel()
+        //        {
+        //            Name = parametros.Name,
+        //            BackgronColor = parametros.BackgronColor,
+        //            Power = parametros.Power,
+        //            Icon = parametros.Icon,
+        //            NmOrder = parametros.NmOrder,
+        //            PowerColor = parametros.PowerColor,
+        //            IdPokemon = parametros.IdPokemon
+        //        });
+        //}
+        //public static async Task Eliminar(string idElemento)
+        //{
+        //    try
+        //    {
+        //        //var firebase = new FirebaseClient("https://mvvm-2c13a-default-rtdb.firebaseio.com/");
 
+        //        // Obtiene el elemento que deseas eliminar
+        //        var elementoAEliminar = await Connection.firebase
+        //            .Child("Pokmeon") // Corregido el nombre del nodo
+        //            .Child(idElemento) // Utiliza el ID específico del elemento a eliminar
+        //            .OnceSingleAsync<PokemonModel>();
+
+        //        if (elementoAEliminar != null)
+        //        {
+        //            // Elimina el elemento usando su ID
+        //            await Connection.firebase.Child("Pokmeon").Child(idElemento).DeleteAsync();
+        //        }
+        //        else
+        //        {
+        //            // El elemento no fue encontrado
+        //            Console.WriteLine("El elemento no existe o no se puede eliminar.");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejar la excepción, por ejemplo, registrar o mostrar un mensaje de error
+        //        Console.WriteLine($"Error al eliminar: {ex.Message}");
+        //    }
+        //}
+        //public async Task EditarPokemon(PokemonModel parametros)
+        //{
+        //    await Connection.firebase.Child("Pokemon").PutAsync(new PokemonModel()
+        //    {
+        //        Name = parametros.Name,
+        //        BackgronColor = parametros.BackgronColor,
+        //        Power = parametros.Power,
+        //        Icon = parametros.Icon,
+        //        NmOrder = parametros.NmOrder,
+        //        PowerColor = parametros.PowerColor,
+        //        IdPokemon = parametros.IdPokemon
+        //    });
+        //}
     }
 }
 

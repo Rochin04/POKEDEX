@@ -1,4 +1,6 @@
-﻿using System;
+﻿using POKEDEX.Model;
+using POKEDEX.ViewModel.VMPokemon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,10 @@ namespace POKEDEX.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditarPokemon : ContentPage
 	{
-		public EditarPokemon (string pokemonId)
+		public EditarPokemon (PokemonModel parametros)
 		{
 			InitializeComponent ();
-		}
+            BindingContext = new VMEditar(Navigation, parametros);
+        }
 	}
 }
